@@ -1,37 +1,44 @@
 /* =========================================================
-   THEME  (Bootstrap 5.3 colour modes drive light/dark)
-   Set <html data-bs-theme="light|dark"> – see script in <head>
+   ANTIQUE HERITAGE THEME – aged parchment, oxblood, brass
+   Works with your existing images (no HTML/JS changes needed)
    ========================================================= */
-:root {
-    --bg: #faf7f2;
-    --ink: #1f2a44;
-    --mut: #5c6579;
-    --card: #fff;
-    --line: #e4ddd0;
-    --acc: #e0a526;
-    --acc-ink: #1f2a44;
-    --btn: #1f2a44;
-    --btn-ink: #fff;
-    --brand: #4f6b54;
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap');
 
-    /* map our tokens onto Bootstrap so its components follow the theme */
+:root {
+    --bg: #efe4cb;
+    --ink: #33201a;
+    --mut: #6d5a47;
+    --card: #f7eed9;
+    --line: #cdb88f;
+    --acc: #a8832f;
+    --acc-ink: #2a1a10;
+    --btn: #6e1f2b;
+    --btn-ink: #f7eed9;
+    --brand: #3a2a1d;
+    --brass: #b48f3c;
+    --photo: sepia(.22) saturate(.92) contrast(1.03);
+
     --bs-body-bg: var(--bg);
     --bs-body-color: var(--ink);
     --bs-border-color: var(--line);
     --bs-secondary-color: var(--mut);
-    --bs-body-font-family: Figtree, system-ui, sans-serif;
+    --bs-body-font-family: 'Cormorant Garamond', Georgia, serif;
+    --bs-body-font-size: 1.12rem;
     --bs-body-line-height: 1.55;
 }
 
 [data-bs-theme=dark] {
-    --bg: #141a2b;
-    --ink: #f1ece2;
-    --mut: #a3abbd;
-    --card: #1d2540;
-    --line: #2e3858;
-    --btn: #e0a526;
-    --btn-ink: #1f2a44;
-    --brand: #2f4a3a;
+    --bg: #1c1410;
+    --ink: #eadcc0;
+    --mut: #b09c7c;
+    --card: #281c15;
+    --line: #4b3a2a;
+    --acc: #c9a24a;
+    --acc-ink: #1c1410;
+    --btn: #c9a24a;
+    --btn-ink: #1c1410;
+    --brand: #2a1a14;
+    --brass: #c9a24a;
 }
 
 /* =========================================================
@@ -49,7 +56,7 @@ a {
 h1,
 h2,
 h3 {
-    font-family: 'Young Serif', Georgia, serif;
+    font-family: 'IM Fell English', Georgia, serif;
     font-weight: 400;
     line-height: 1.15;
 }
@@ -78,11 +85,13 @@ section {
    ========================================================= */
 .bar {
     background: var(--brand);
-    color: #fff;
+    color: #e3cf9f;
+    border-bottom: 3px double var(--brass);
     overflow: hidden;
     white-space: nowrap;
-    font-size: 14px;
-    padding: 7px 0;
+    font-size: 16px;
+    font-style: italic;
+    padding: 6px 0;
 }
 
 .bar div {
@@ -138,7 +147,7 @@ header {
     background: none;
     border: 1px solid var(--line);
     color: var(--ink);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 8px 14px;
 }
 
@@ -209,9 +218,9 @@ header {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(15, 23, 42, 0.9) 0%,
-    rgba(15, 23, 42, 0.5) 50%,
-    rgba(15, 23, 42, 0.15) 100%
+    rgba(32, 14, 12, 0.88) 0%,
+    rgba(32, 14, 12, 0.5) 50%,
+    rgba(32, 14, 12, 0.12) 100%
   );
 }
 
@@ -243,16 +252,17 @@ header {
 .slide .tx .cta {
   display: inline-block;
   padding: 12px 28px;
-  background-color: #eab308;
-  color: #0f172a;
+  background-color: #c9a24a;
+  color: #2a1a10;
   text-decoration: none;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 2px;
+  border: 1px solid #f1dfa8;
   transition: background-color 0.3s ease;
 }
 
 .slide .tx .cta:hover {
-  background-color: #ca8a04;
+  background-color: #dcb85e;
 }
 
 /* Slider indicators/dots */
@@ -301,7 +311,7 @@ header {
     background: var(--btn);
     color: var(--btn-ink);
     border: 0;
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 12px 24px;
     font-weight: 600;
     display: inline-block;
@@ -319,7 +329,7 @@ header {
 }
 
 .room {
-    border-radius: 12px;
+    border-radius: 3px;
     overflow: hidden;
     position: relative;
     aspect-ratio: 4/5;
@@ -341,7 +351,7 @@ header {
     padding: 14px;
     width: 100%;
     background: linear-gradient(transparent, rgba(0, 0, 0, .65));
-    font-family: 'Young Serif', serif;
+    font-family: 'IM Fell English', serif;
     font-weight: 400;
     font-size: 20px;
 }
@@ -409,7 +419,7 @@ header {
 .p {
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 12px;
+    border-radius: 3px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -552,7 +562,7 @@ header {
 .it .art {
     width: 64px;
     height: 64px;
-    border-radius: 8px;
+    border-radius: 2px;
     overflow: hidden;
 }
 
@@ -583,7 +593,7 @@ header {
     overflow: auto;
     background: var(--bg);
     border: 1px solid var(--line);
-    border-radius: 14px;
+    border-radius: 3px;
     z-index: 50;
     display: none;
     padding: 20px;
@@ -614,7 +624,7 @@ header {
 }
 
 .mimg {
-    border-radius: 10px;
+    border-radius: 2px;
     overflow: hidden;
     aspect-ratio: 1;
 }
@@ -651,8 +661,115 @@ header {
 .mtx textarea {
     padding: 9px;
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 2px;
     background: var(--card);
     color: var(--ink);
     font: inherit;
 }
+/* =========================================================
+   ANTIQUE DETAILS
+   ========================================================= */
+body {
+    background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(168,131,47,.10), transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(110,31,43,.08), transparent 50%);
+    background-attachment: fixed;
+}
+
+.navbar-brand {
+    font-family: 'IM Fell English', serif;
+    letter-spacing: .06em;
+}
+
+header { border-bottom: 3px double var(--brass); }
+
+/* ornamental heading divider */
+h2 { text-align: center; }
+h2::after {
+    content: "\2766";
+    display: block;
+    margin-top: 8px;
+    font-size: 20px;
+    color: var(--brass);
+}
+
+/* gilt inner frame on hero */
+#hero::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(241,223,168,.7);
+    outline: 1px solid rgba(241,223,168,.35);
+    outline-offset: 5px;
+    z-index: 3;
+    pointer-events: none;
+}
+.slide .tx h1 { font-family: 'IM Fell English', serif; font-style: italic; }
+.slide .tx p { font-size: 1.2rem; }
+
+/* every photo gets an aged-print tone and soft vignette */
+.slide .art img, .room-img, .art img, .mimg img {
+    filter: var(--photo);
+}
+.room .art::after, .p .art::after, .mimg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 38px rgba(60,35,15,.45);
+    pointer-events: none;
+}
+.mimg { position: relative; }
+
+/* rooms: framed plates */
+.room {
+    border: 2px solid var(--brass);
+    outline: 1px solid var(--brass);
+    outline-offset: -8px;
+}
+.room b {
+    background: linear-gradient(transparent, rgba(30,14,8,.8));
+    font-style: italic;
+    text-align: center;
+    color: #f1dfa8;
+}
+
+/* product cards: museum plate with inner mat */
+.p {
+    border: 1px solid var(--brass);
+    padding: 8px;
+    box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--line);
+}
+.p .art { border: 1px solid var(--line); }
+.p .in { padding: 12px 6px 6px; text-align: center; }
+.p h3 { font-size: 19px; font-style: italic; }
+.p .cta { border-radius: 2px; margin-top: 8px; border: 1px solid var(--brass); }
+.pr { font-weight: 600; font-size: 1.15rem; }
+
+/* discount badge as a wax seal */
+.off {
+    background: radial-gradient(circle at 35% 30%, #9b2d3c, #5a1520);
+    color: #f1dfa8;
+    border: 1px solid #d8b86a;
+    box-shadow: 0 2px 4px rgba(0,0,0,.4);
+    top: 12px; left: 12px;
+}
+
+.cta {
+    background: var(--btn);
+    color: var(--btn-ink);
+    border: 1px solid var(--brass);
+    letter-spacing: .04em;
+    font-weight: 700;
+}
+.cta:hover { filter: brightness(1.12); }
+
+.ib { border-color: var(--brass); font-weight: 600; }
+
+.chip { border-color: var(--brass); font-style: italic; }
+
+.visit { border-top: 3px double var(--brass); border-bottom: 3px double var(--brass); color: #ecdcb6; }
+
+footer { background: var(--card); }
+
+#drawer, #modal { border-color: var(--brass); }
+#modal { outline: 1px solid var(--brass); outline-offset: -8px; }
