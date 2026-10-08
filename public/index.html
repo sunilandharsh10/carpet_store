@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Varistaliving Carpets – Carpets &amp; Rugs</title>
+<script>
+    /* follow the OS light/dark setting (Bootstrap 5.3 colour modes) */
+    document.documentElement.dataset.bsTheme =
+        matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bar" aria-label="Offers"><div><span>Cash on delivery available</span><span>Free shipping across India</span><span>Extra 10% off prepaid orders</span><span>Use code NEW10 for 10% off</span></div></div>
+
+<header>
+    <nav class="navbar navbar-expand-md">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold m-0" href="#top">
+                <img src="/logo/logo.png" alt="" height="40">
+                <span class="d-none d-sm-inline">VARISTALIVING CARPETS</span>
+                <span class="visually-hidden d-sm-none">Varistaliving Carpets</span>
+            </a>
+
+            <!-- actions stay visible on mobile; order-md-last puts them on the right on desktop -->
+            <div class="d-flex align-items-center gap-2 ms-auto order-md-last">
+                <!-- <button class="ib" id="signinBtn">Sign in</button> -->
+                <button class="ib" id="cartBtn" aria-label="Open cart">
+                    <i class="bi bi-bag"></i> Cart <span class="badge rounded-pill ms-1" id="cartN">0</span>
+                </button>
+                <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+                    aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list fs-2"></i>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse end-0 m-2" id="navMain">
+                <ul class="navbar-nav ms-md-3">
+                    <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rooms">Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#visit">Showroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+<main id="top">
+<div class="hero" id="hero"></div>
+
+<section id="rooms"><div class="container"><h2>Shop by room</h2><div class="rooms" id="rooms-grid"></div></div></section>
+
+<section id="shop" class="pt-0"><div class="container">
+    <h2>Bestsellers</h2>
+    <div class="filters" id="adminBar"></div>
+    <div class="filters" id="fType" role="group" aria-label="Filter by type"></div>
+    <div class="filters" id="fColor" role="group" aria-label="Filter by colour"></div>
+    <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="visit" id="visit"><div class="container">
+    <div class="row align-items-center g-5">
+        <!-- <div class="col-md-6">
+                <img src="/logo/logo.png" alt="Brand Logo" class="navbar-brand" height="40" />
+        </div> -->
+        <div class="col-md-6">
+            <h2>Visit the showroom</h2>
+            <p class="m">Feel the pile and see true colours before you buy. Replace the details below with your own store.</p>
+            <dl class="row mt-4 mb-0 gy-1">
+                <dt class="col-4 col-sm-3">Hours</dt><dd class="col-8 col-sm-9 mb-0">Mon–Sun, 10:30 am – 7 pm</dd>
+                <dt class="col-4 col-sm-3">Phone</dt><dd class="col-8 col-sm-9 mb-0">+91 00000 00000</dd>
+                <dt class="col-4 col-sm-3">Address</dt><dd class="col-8 col-sm-9 mb-0">Your street, your city</dd>
+            </dl>
+        </div>
+    </div>
+</div></section>
+</main>
+
+<footer id="contact" class="py-5 border-top">
+    <div class="container d-flex flex-wrap justify-content-between align-items-start gap-4">
+        <div>
+            <b class="fs-5">Varistaliving Carpets</b>
+            <p class="m mb-0">Hand tufted, jute, shaggy and irregular carpets.</p>
+        </div>
+        <form class="d-flex flex-wrap align-items-center gap-2" id="nl">
+            <input class="form-control w-auto" type="email" required placeholder="Your email" aria-label="Email">
+            <button class="cta" type="submit">Get offers</button>
+            <span class="m" id="nlMsg" role="status"></span>
+        </form>
+    </div>
+</footer>
+
+<div id="modal" role="dialog" aria-modal="true" aria-label="Product details"><button class="ib mclose" id="mclose">Close</button><div id="mbody"></div></div>
+<div id="shade"></div>
+
+<aside id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+        <h3 class="h5 mb-0">Your cart</h3>
+        <button class="ib" id="closeCart">Close</button>
+    </div>
+    <div id="items" class="flex-grow-1 overflow-auto px-3 py-2"></div>
+    <div class="d-flex flex-column gap-2 p-3 border-top">
+        <div class="d-flex justify-content-between"><span>Subtotal</span><span id="sub">₹0</span></div>
+        <div class="d-flex justify-content-between"><span>Discount</span><span id="disc">–₹0</span></div>
+        <div class="d-flex justify-content-between fw-bold"><span>Total</span><span id="tot">₹0</span></div>
+        <input class="form-control" id="code" placeholder="Discount code (try NEW10)" aria-label="Discount code">
+        <select class="form-select" id="pay" aria-label="Payment method">
+            <option value="prepaid">Prepaid (extra 10% off)</option>
+            <option value="cod">Cash on delivery</option>
+        </select>
+        <button class="cta" id="checkout">Order on WhatsApp</button>
+        <span class="m" id="cmsg" role="status"></span>
+    </div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    /* close the mobile menu after a link is tapped */
+    document.querySelectorAll('#navMain .nav-link').forEach(function (a) {
+        a.addEventListener('click', function () {
+            var c = bootstrap.Collapse.getInstance('#navMain');
+            if (c) c.hide();
+        });
+    });
+</script>
+<script src="app.js"></script>
+</body>
+</html>

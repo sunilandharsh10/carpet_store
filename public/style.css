@@ -1,0 +1,658 @@
+/* =========================================================
+   THEME  (Bootstrap 5.3 colour modes drive light/dark)
+   Set <html data-bs-theme="light|dark"> – see script in <head>
+   ========================================================= */
+:root {
+    --bg: #faf7f2;
+    --ink: #1f2a44;
+    --mut: #5c6579;
+    --card: #fff;
+    --line: #e4ddd0;
+    --acc: #e0a526;
+    --acc-ink: #1f2a44;
+    --btn: #1f2a44;
+    --btn-ink: #fff;
+    --brand: #4f6b54;
+
+    /* map our tokens onto Bootstrap so its components follow the theme */
+    --bs-body-bg: var(--bg);
+    --bs-body-color: var(--ink);
+    --bs-border-color: var(--line);
+    --bs-secondary-color: var(--mut);
+    --bs-body-font-family: Figtree, system-ui, sans-serif;
+    --bs-body-line-height: 1.55;
+}
+
+[data-bs-theme=dark] {
+    --bg: #141a2b;
+    --ink: #f1ece2;
+    --mut: #a3abbd;
+    --card: #1d2540;
+    --line: #2e3858;
+    --btn: #e0a526;
+    --btn-ink: #1f2a44;
+    --brand: #2f4a3a;
+}
+
+/* =========================================================
+   BASE (only what Bootstrap's reboot doesn't give us)
+   ========================================================= */
+html {
+    scroll-padding-top: 80px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Young Serif', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+h2 {
+    font-size: clamp(26px, 3.5vw, 36px);
+    margin-bottom: 1.5rem;
+}
+
+section {
+    padding: 56px 0;
+}
+
+:focus-visible {
+    outline: 3px solid var(--acc);
+    outline-offset: 2px;
+}
+
+.container {
+    max-width: 1180px;
+    --bs-gutter-x: 2.5rem;
+}
+
+/* =========================================================
+   TOP BAR + HEADER
+   ========================================================= */
+.bar {
+    background: var(--brand);
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 7px 0;
+}
+
+.bar div {
+    display: inline-block;
+    padding-left: 100%;
+    animation: mq 28s linear infinite;
+}
+
+.bar span {
+    margin-right: 48px;
+}
+
+@keyframes mq {
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bar div {
+        animation: none;
+        padding-left: 20px;
+    }
+}
+
+header {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    /* below drawer(40) / modal(50) */
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
+
+.navbar {
+    min-height: 64px;
+    --bs-navbar-color: var(--mut);
+    --bs-navbar-hover-color: var(--ink);
+    --bs-navbar-active-color: var(--ink);
+    --bs-navbar-brand-color: var(--ink);
+    --bs-navbar-brand-hover-color: var(--ink);
+    --bs-navbar-toggler-border-color: transparent;
+    --bs-navbar-toggler-focus-width: 3px;
+}
+
+.navbar-nav {
+    --bs-nav-link-font-size: .92rem;
+    --bs-nav-link-font-weight: 600;
+    --bs-nav-link-padding-x: .9rem;
+}
+
+.ib {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+
+.ib:hover {
+    background: var(--card);
+}
+
+#cartN {
+    background: var(--acc);
+    color: var(--acc-ink);
+    font-weight: 600;
+}
+
+/* =========================================================
+   HERO  (slides are rendered by app.js)
+   ========================================================= */
+/* Hero section container */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 55vh; /* Standard full-screen banner height, leaves header visible */
+  min-height: 500px;
+  overflow: hidden;
+}
+
+/* Individual slides */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.slide.on {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Background image filling full slide area */
+.slide .art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.slide .art img,
+.slide .art svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers area without distortion */
+  object-position: center;
+}
+
+/* Dark gradient overlay for text readability */
+.slide .art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(15, 23, 42, 0.5) 50%,
+    rgba(15, 23, 42, 0.15) 100%
+  );
+}
+
+/* Text overlay positioning */
+.slide .tx {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  margin-left: 8%;
+  margin-right: auto;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.slide .tx h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.slide .tx p {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  color: #e2e8f0;
+}
+
+.slide .tx .cta {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #eab308;
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.slide .tx .cta:hover {
+  background-color: #ca8a04;
+}
+
+/* Slider indicators/dots */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+
+.dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.dots button.on {
+  background: #ffffff;
+  width: 28px;
+  border-radius: 6px;
+}
+
+
+@media (max-width: 720px) {
+    .slide.on {
+        grid-template-columns: 1fr;
+    }
+
+    .slide .art {
+        order: -1;
+        min-height: 200px;
+    }
+
+    .slide .tx {
+        padding: 28px 20px;
+    }
+}
+
+.cta {
+    background: var(--btn);
+    color: var(--btn-ink);
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+
+
+/* =========================================================
+   ROOMS + PRODUCT GRID  (rendered by app.js)
+   ========================================================= */
+.rooms {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.room {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    border: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.room .art {
+    position: absolute;
+    inset: 0;
+}
+
+.room b {
+    position: relative;
+    padding: 14px;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, .65));
+    font-family: 'Young Serif', serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+@media (max-width: 720px) {
+    .rooms {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+    align-items: center;
+}
+
+.chip {
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    border-radius: 99px;
+    padding: 6px 16px;
+}
+
+.chip[aria-pressed=true] {
+    background: var(--btn);
+    color: var(--btn-ink);
+    border-color: var(--btn);
+}
+
+.sw {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    padding: 0;
+}
+
+.sw[aria-pressed=true] {
+    outline: 3px solid var(--acc);
+    outline-offset: 1px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 960px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+.p {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.p .art {
+    aspect-ratio: 1;
+    position: relative;
+}
+
+.p .in {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.p h3 {
+    font-size: 17px;
+}
+
+.p .cta {
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+}
+
+.off {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--acc);
+    color: var(--acc-ink);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 99px;
+}
+
+.m {
+    color: var(--mut);
+    font-size: 14px;
+}
+
+.pr {
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.pr s {
+    color: var(--mut);
+    margin-left: 6px;
+    font-size: 14px;
+}
+
+.empty {
+    grid-column: 1 / -1;
+    color: var(--mut);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.art svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================================================
+   SHOWROOM (layout via Bootstrap grid)
+   ========================================================= */
+.visit {
+    background: var(--brand);
+    color: #fff;
+}
+
+.visit .m {
+    color: inherit;
+    opacity: .8;
+}
+
+.visit dt {
+    font-weight: 400;
+    opacity: .7;
+}
+
+/* =========================================================
+   CART DRAWER + PRODUCT MODAL  (toggled by app.js via .open)
+   ========================================================= */
+#drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(400px, 100%);
+    background: var(--bg);
+    border-left: 1px solid var(--line);
+    z-index: 40;
+    transform: translateX(100%);
+    transition: transform .25s;
+    display: flex;
+    flex-direction: column;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+#drawer.open {
+    transform: none;
+}
+
+#shade {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    z-index: 30;
+    display: none;
+}
+
+#shade.open {
+    display: block;
+}
+
+.it {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+}
+
+.it .art {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.q {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.q button {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 0;
+}
+
+#modal {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(860px, 94vw);
+    height: fit-content;
+    max-height: 90vh;
+    overflow: auto;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    z-index: 50;
+    display: none;
+    padding: 20px;
+}
+
+#modal.open {
+    display: block;
+}
+
+.mclose {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+}
+
+#mbody {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 720px) {
+    #mbody {
+        grid-template-columns: 1fr;
+        padding-top: 36px;
+    }
+}
+
+.mimg {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.mtx {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mtx p {
+    margin: 0;
+    color: var(--mut);
+}
+
+.mtx .pr {
+    padding: 0;
+}
+
+.big b {
+    font-size: 28px;
+}
+
+.mtx label {
+    font-size: 14px;
+    color: var(--mut);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mtx input:not([type=file]),
+.mtx select,
+.mtx textarea {
+    padding: 9px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--ink);
+    font: inherit;
+}
